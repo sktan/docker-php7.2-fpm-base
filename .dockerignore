@@ -1,0 +1,4 @@
+website/.env
+**/.git
+website/config.php
+website/wp-config.php
