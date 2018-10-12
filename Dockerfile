@@ -21,5 +21,9 @@ EXPOSE 9001/tcp
 
 USER root
 
-ENTRYPOINT ["php-fpm7.2"]
-CMD ["-F" "-R"]
+ADD scripts/website.sh /opt/website.sh
+
+WORKDIR /opt/
+RUN chmod 700 /opt/website.sh
+
+ENTRYPOINT ["./website.sh"]
