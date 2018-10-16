@@ -32,6 +32,15 @@ Running a container locally:
 docker run -d -p 9001:9001 --restart=always --name my-docker-website -v /var/web_configs/config.php:/var/www/html/config.php my-docker-website
 ```
 
+## Adding your website code
+
+Clone / fork this repository, and then add your website files inside of the "website" directory. You can also mount your website files by using the following command:
+
+```
+#!/usr/bin/env bash
+docker run -d -p 9001:9001 --restart=always --name my-docker-website -v /var/web_configs/config.php:/var/www/html/config.php -v /var/www/website_files/:/var/www/html my-docker-website
+```
+
 ## Nginx configuration
 
 A simple nginx configuration to get started.
@@ -44,9 +53,7 @@ server {
     error_log /var/log/nginx/www.example.com.error.log;
     access_log  /var/log/nginx/www.example.com.access.log;
 
-    add_header Access-Control-Allow-Origin https://www.example.com;
-
-    root /var/www/html/public;
+    root /var/www/html;
     index index.php;
 
     location ~ /\. {
